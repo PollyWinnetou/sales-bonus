@@ -22,8 +22,15 @@ function analyzeSalesData(data, options) {
     throw new Error("Некорректные входные данные");
   }
 
-  if (!data.products || !Array.isArray(data.products)) {
+  if (!Array.isArray(data.products) || data.products.length === 0) {
     throw new Error("Некорректные данные products");
+  }
+
+  if (
+    !Array.isArray(data.purchase_records) ||
+    data.purchase_records.length === 0
+  ) {
+    throw new Error("Некорректные данные purchase_records");
   }
 
   if (typeof options !== "object" || options === null) {
